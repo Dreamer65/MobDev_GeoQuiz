@@ -19,37 +19,47 @@
             android:layout_gravity="center_vertical|center_horizontal">
 
         <Button
-                android:id="@+id/true_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            android:id="@+id/true_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:theme="@style/Buttons"
-                android:text="@string/true_button"/>
+            android:text="@string/true_button"/>
 
         <Button
-                android:id="@+id/false_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            android:id="@+id/false_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:theme="@style/Buttons"
-                android:text="@string/false_button"/>
+            android:text="@string/false_button"/>
 
     </LinearLayout>
 
     <Button
-            android:id="@+id/cheat_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        android:id="@+id/cheat_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:theme="@style/Buttons"
-            android:layout_gravity="bottom|center_horizontal"
-            android:text="@string/cheat_button"/>
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="@string/cheat_button"/>
 
     <Button
-            android:id="@+id/next_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:text="@string/next_button"
+        android:id="@+id/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:text="@string/next_button"
         android:theme="@style/Buttons"
-            android:drawableEnd="@drawable/arrow_right"
-            android:drawablePadding="4dp"/>
+        android:drawableEnd="@drawable/arrow_right"
+        android:drawablePadding="4dp"/>
+
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/arrow_left"
+        android:drawablePadding="4dp"
+        android:text="@string/back_button"
+        android:layout_gravity="bottom|left"
+        android:theme="@style/Buttons" />
 
 </FrameLayout>

@@ -97,8 +97,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (requestCode == REQUEST_CODE_CHEAT) {
-            quizViewModel.isCheater =
+            //quizViewModel.isCheater =
+            //    data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
+            quizViewModel.cheatedAnswers[quizViewModel.currentIndex] =
                 data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
+
         }
     }
 
@@ -155,17 +158,24 @@ class MainActivity : AppCompatActivity() {
         falseButton.isEnabled = false
 
         val correctAnswer = quizViewModel.setCurrentAnswer(userAnswer)
-        val messageResId = when {
-            quizViewModel.isCheater -> R.string.judgment_toast
+
+        val toastText = when {
+            quizViewModel.cheatedAnswers[quizViewModel.currentIndex] ?: false -> R.string.judgment_toast
             correctAnswer -> R.string.correct_toast
             else -> R.string.incorrect_toast
         }
-        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
+        Toast.makeText(this, toastText, Toast.LENGTH_SHORT)
             .show()
 
         val correctPercent = quizViewModel.correctPercents
+        val cheatCount = quizViewModel.cheatCount
         if (correctPercent != null)
-            Toast.makeText(this, getString(R.string.result_text, correctPercent),
+            Toast.makeText(this, getString(R.string.result_text, correctPercent,
+                when (cheatCount) {
+                    0 -> ""
+                    else -> getString(R.string.cheated_text, cheatCount)
+                }
+            ),
                 Toast.LENGTH_LONG).show()
     }
 }

@@ -10,7 +10,6 @@
 
     <style name="Buttons" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:backgroundTint">@color/colorButtonBackground</item>
-        <item name="android:background">@color/colorButtonBackground</item>
         <item name="android:textColor">@color/colorButtonText</item>
     </style>
 

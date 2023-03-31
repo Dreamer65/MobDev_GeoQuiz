@@ -19,6 +19,7 @@ class QuizViewModel : ViewModel() {
     )
 
     private val userAnswers = arrayOfNulls<Boolean>(questionBank.size)
+    val cheatedAnswers = arrayOfNulls<Boolean>(questionBank.size)
 
     fun setCurrentAnswer(answer : Boolean) :Boolean{
         val userResult = (answer == currentQuestionAnswer)
@@ -34,6 +35,16 @@ class QuizViewModel : ViewModel() {
                 if (answer) correctCount++
             }
             return (correctCount / questionBank.size * 100).toInt()
+        }
+
+    val cheatCount: Int?
+        get() {
+            var cheat = 0
+            for (answer in cheatedAnswers) {
+                if (answer == null) continue
+                if (answer) cheat++
+            }
+            return cheat
         }
 
     val isCurrentAnswered: Boolean
