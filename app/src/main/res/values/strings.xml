@@ -26,4 +26,5 @@
     <string name="back_button">Back</string>
     <string name="result_text">Correct percent: %1d %2s</string>.
     <string name="cheated_text">, Answers cheated: %1d</string>
+    <string name="tips_left">, Tips left: %1d</string>
 </resources>

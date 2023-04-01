@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cheatButton: Button
     private lateinit var backButton: Button
     private lateinit var questionTextView: TextView
+    private lateinit var tipsTextView: TextView
 
     private val quizViewModel: QuizViewModel by lazy {
         ViewModelProviders.of(this).get(QuizViewModel::class.java)
@@ -46,7 +47,10 @@ class MainActivity : AppCompatActivity() {
         nextButton = findViewById(R.id.next_button)
         cheatButton = findViewById(R.id.cheat_button)
         questionTextView = findViewById(R.id.question_text_view)
+        tipsTextView = findViewById(R.id.tips_text_view)
         backButton = findViewById(R.id.back_button)
+
+        tipsTextView.text = getString(R.string.tips_left, quizViewModel.tipsLeft)
 
         trueButton.setOnClickListener { view: View ->
             checkAnswer(true)
@@ -97,11 +101,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (requestCode == REQUEST_CODE_CHEAT) {
-            //quizViewModel.isCheater =
-            //    data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
             quizViewModel.cheatedAnswers[quizViewModel.currentIndex] =
                 data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
-
+            quizViewModel.tipsLeft--
+            tipsTextView.text = getString(R.string.tips_left, quizViewModel.tipsLeft)
+            if (quizViewModel.tipsLeft <= 0) cheatButton.isEnabled = false
         }
     }
 
